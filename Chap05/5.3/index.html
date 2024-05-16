@@ -10056,7 +10056,8 @@ $$</p>
 <a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">S</span>
 </code></pre></div>
 </blockquote>
-<p>We prove that it produces a random $m$ subset by induction on $m$. It is obviously true if $m = 0$ as there is only one size $m$ subset of $[n]$. Suppose $S$ is a uniform $m − 1$ subset of $n − 1$, that is, $\forall j \in [n - 1]$, $\Pr[j \in S] = \frac{m - 1}{n - 1}$.</p>
+<p>Solution 1:
+We prove that it produces a random $m$ subset by induction on $m$. It is obviously true if $m = 0$. Suppose $S$ is a uniform $m − 1$ subset of $n − 1$, that is, $\forall j \in [n - 1]$, $\Pr[j \in S] = \frac{m - 1}{n - 1}$.</p>
 <p>If we let $S'$ denote the returned set, suppose first $j \in [n − 1]$,</p>
 <p>$$
 \begin{aligned}
@@ -10069,6 +10070,38 @@ $$</p>
 \end{aligned}
 $$</p>
 <p>Since the constructed subset contains each of $[n − 1]$ with the correct probability, it must also contain $n$ with the correct probability because the probabilities sum to $1$.</p>
+<p>Solutioin 2:
+I think the Solution 1 is not correct. "Every element in [1, n] has a probability $\frac{m}{n}$ to appear in the set S" is a weak condition, not strong enough to ensure that the set S is a random sample. For example, a window with a capacity of m elements moves along the input array, so you can get a m-element subset of the input array A[1 + offset : m + offset] , in which offset is chosen randomly.</p>
+<p>You need to prove the probability to get any particular set S is $\frac{1}{\binom{n}{m}}$</p>
+<p>The corrected solution is as follows:<br />
+Use mathematic induction on both m and n. (You can not just use the induction only on m or only on n.)
+Suppose the result is true for any m and n such that $0 \le m \le n$, $m \lt m_0$, $n \lt n_0$  </p>
+<p>We prove that the result is true for $m = m_0$ and $n = n_0$. Denote one particular m-element subset as $S_{m_, n}$.<br />
+case 1: $n \in S_{m_, n}$</p>
+<p>$$
+\begin{aligned}
+\Pr[S_{m_, n}]
+    &amp; = \Pr[S_{m_, n} \backslash n] * \Pr[n \mid S_{m_, n} \backslash n] \\
+    &amp; = \frac{1}{\binom{n-1}{m-1}} * (\frac{m-1}{n} + \frac{1}{n}) \\
+    &amp; = \frac{1}{\binom{n}{m}}
+\end{aligned}
+$$</p>
+<p>case 2: $n \notin S_{m_, n}$.
+Set the last element that is added to $S_{m_, n}$ as $a_i$ where $i \in [1, m]$.  </p>
+<p>$$
+\begin{aligned}
+\Pr[S_{m_, n}]
+    &amp; = \Sigma_{i=1}^{m} \Pr[S_{m_, n} \backslash a_i] * \Pr[a_i \mid S_{m_, n} \backslash a_i] \\
+    &amp; = \Sigma_{i=1}^{m} \frac{1}{\binom{n-1}{m-1}} * \frac{1}{n} \\
+    &amp; = \frac{1}{\binom{n}{m}}
+\end{aligned}
+$$</p>
+<p>Actually, what we need to prove is that:</p>
+<ol>
+<li>the result is true for  $m = m_0$ and $n = n_0 - 1$</li>
+<li>the result is true for  $m = m_0 - 1$ and $n = n_0$</li>
+</ol>
+<p>but the proof will be the same as the senario "$m = m_0$ and $n = n_0$"</p>
 
 
 
