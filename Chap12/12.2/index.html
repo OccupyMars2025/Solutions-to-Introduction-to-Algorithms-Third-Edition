@@ -10058,6 +10058,13 @@ child.</p>
 <p>To show this bound on the runtime, we will show that using this procedure, we traverse each edge twice. This will suffice because the number of edges in a tree is one less than the number of vertices.</p>
 <p>Consider a vertex of a BST, say $x$. Then, we have that the edge between $x.p$ and $x$ gets used when successor is called on $x.p$ and gets used again when it is called on the largest element in the subtree rooted at $x$. Since these are the only two times that that edge can be used, apart from the initial finding of tree minimum. We have that the runtime is $O(n)$. We trivially get the runtime is $\Omega(n)$ because that is the size of the output.</p>
 <p>Solution 2: I think the essence is that the all 3 pointers "left", "right", "parent" of each node in the tree are visited once and only once when traversing the tree (no matter what kind of traversal algorithm you are using), so the running time is $\Theta(3*n)$. This argument seems to be true but I don't know how to prove it rigorously.</p>
+<p>Visiting Each Pointer Once During the traversal:</p>
+<ol>
+<li>The left pointer of a node is followed once when descending to the minimum element or when finding the minimum in the right subtree.</li>
+<li>The right pointer is considered once when moving to the right child to find the next successor.</li>
+<li>The parent pointer is traversed when moving up the tree to find the successor when there is no right child.</li>
+</ol>
+<p>Thus, each of the three pointers in a node is visited at most once during the entire traversal.</p>
 <h2 id="122-8">12.2-8<a class="headerlink" href="#122-8" title="Permanent link">&para;</a></h2>
 <blockquote>
 <p>Prove that no matter what node we start at in a height-$h$ binary search tree, $k$ successive calls to $\text{TREE-SUCCESSOR}$ take $O(k + h)$ time.</p>
