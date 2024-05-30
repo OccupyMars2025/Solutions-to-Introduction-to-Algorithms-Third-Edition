@@ -10070,6 +10070,8 @@ child.</p>
 <p>Prove that no matter what node we start at in a height-$h$ binary search tree, $k$ successive calls to $\text{TREE-SUCCESSOR}$ take $O(k + h)$ time.</p>
 </blockquote>
 <p>Suppose $x$ is the starting node and $y$ is the ending node. The distance between $x$ and $y$ is at most $2h$, and all the edges connecting the $k$ nodes are visited twice, therefore it takes $O(k + h)$ time.</p>
+<p>Solution 2: I don't understand the original solution.</p>
+<p>https://github.com/OccupyMars2025/Introduction-to-Algorithms-4th-Edition/issues/6</p>
 <h2 id="122-9">12.2-9<a class="headerlink" href="#122-9" title="Permanent link">&para;</a></h2>
 <blockquote>
 <p>Let $T$ be a binary search tree whose keys are distinct, let $x$ be a leaf node, and let $y$ be its parent. Show that $y.key$ is either the smallest key in $T$ larger than $x.key$ or the largest key in $T$ smaller than $x.key$.</p>
