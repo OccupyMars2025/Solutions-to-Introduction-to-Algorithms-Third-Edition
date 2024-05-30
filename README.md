@@ -1,3 +1,12 @@
+## How to modify this repo: 
+### 1. clone this repo to your local computer
+### 2. modify sth in the "main" branch
+### 3. At the root path, run `mkdocs build`, then `mkdocs gh-deploy`. In less than 30 seconds, you modification will show up in https://occupymars2025.github.io/Solutions-to-Introduction-to-Algorithms-Third-Edition/
+### 4. You need to commit and push your changes in the "main" branch
+
+### Note: run `mkdocs serve` to check your modification on your local computer
+---
+
 <p align="center">
   <img src="https://i.imgur.com/ESwjKaR.png" height="150" alt="CLRS">
 </p>
